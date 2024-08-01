@@ -1,0 +1,10 @@
+package com.coderlyfe.DataStructuresAndAlgorithms;
+
+public class Node {
+
+    char data;
+
+    Node(char data){
+        this.data = data;
+    }
+}
