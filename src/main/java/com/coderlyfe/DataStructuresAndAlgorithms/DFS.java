@@ -1,8 +1,8 @@
 package com.coderlyfe.DataStructuresAndAlgorithms;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.ListIterator;
+import java.util.Iterator;
+import java.util.List;
 
 public class DFS {
 
@@ -40,24 +40,47 @@ public class DFS {
         }
     }*/
 
-    public HashMap<Integer, LinkedList<Integer>> adj = new HashMap<>();
-    public HashMap<Integer, Boolean> visited = new HashMap<>();
-    public String results = "";
 
-    public void dfs(int v){
+
+    /*HashMap<Integer, LinkedList<Integer>> adj = new HashMap<>();
+    HashMap<Integer, Boolean> visited = new HashMap<>();
+    String results = "";
+    public String dfs(int v){
         visited.put(v, true);
-        results+=v;
         System.out.print(v);
+        results+=v;
 
-        ListIterator<Integer> i = adj.get(v).listIterator();
+        Iterator<Integer> i = adj.get(v).listIterator();
 
         while(i.hasNext()){
             int n = i.next();
-            if(!visited.get(n)){
-                dfs(n);
-            }
+
+            if(!visited.get(n)) dfs(n);
         }
+        return results;
+    }*/
+
+
+
+    String results = "";
+    HashMap<Integer, List<Integer>> adj = new HashMap<>();
+    HashMap<Integer, Boolean> visited = new HashMap<>();
+    public String dfs(int v){
+
+
+        visited.put(v, true);
+        System.out.println("Visited: " + v);
+        results+=v;
+
+        Iterator<Integer> i = adj.get(v).listIterator();
+
+        while(i.hasNext()){
+            int n = i.next();
+            if(!visited.get(n)) dfs(n);
+        }
+        return  results;
     }
 
-
+    public static void main(String[] args){
+    }
 }
