@@ -1,21 +1,10 @@
 package com.coderlyfe.DataStructuresAndAlgorithms;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SlidingWindow {
 
-    /*public static int maxSum(int[] array, int k){
-        int currentMaxSum = 0;
-        int maxSum = Integer.MIN_VALUE;
-        int size = k - 1;
-        for(int i= 0; i < array.length; i++){
-            currentMaxSum+= array[i];
-            if( i >= size){
-                maxSum = Math.max(currentMaxSum, maxSum);
-                currentMaxSum -= array[i - size];
-            }
-        }
-        return maxSum;
-
-    }
 
     public static int smallestSubArrayGreaterThanOrEqualToK(int[] array, int k){
         int currentWindowSum = 0;
@@ -35,12 +24,7 @@ public class SlidingWindow {
 
     }
 
-    public static int longestSubStringWithKDistinctCharcters(Character[] arry, int k){
-        return 0;
-
-    }
-
-    public static int maxSum2(int[] array, int k){
+    public static int maxSum(int[] array, int k){
         int currentRunningSum = 0;
         int max = Integer.MIN_VALUE;
         int size = k -1;
@@ -100,72 +84,10 @@ public class SlidingWindow {
     }
 
 
-
-        public static int longestSubstringWithXDistinctChars(String[] array, int k){
-        int max = Integer.MIN_VALUE;
-        Map<String, Integer> hashmap = new HashMap<>();
-        int start = 0;
-        for(int i = 0; i < array.length; i++) {
-            String key = array[i];
-                hashmap.put(key, hashmap.getOrDefault(key,0) + 1);
-
-                while (hashmap.size() > k) {
-                    String dec = array[start];
-                    hashmap.put(dec, hashmap.get(dec) - 1);
-                    if(hashmap.get(dec) == 0) hashmap.remove(dec);
-                    start++;
-                }
-            max = Math.max(max, i - start + 1);
-        }
-        return max;
-    }
-
-
-    //[['A','B','C','E'],
-    //['S','F','C','S'],
-    //['A','D','E','E']]
-    //word = “ABCCED”
-    private static void depthFirstSearch(char[][] letters, int src){
-        boolean[] visited = new boolean[letters.length];
-        dfsHelper(letters, visited, src);
-    }
-
-    private static void dfsHelper(char[][] letters, boolean[] visited, int src){
-        if(visited[src]){
-            return;
-        }else{
-            visited[src] = true;
-        }
-
-        for(int i = 0; i < letters.length; i++){
-            System.out.println("Visited: "+letters[src][i] + " at index: "+ "["+src+"]"+ "["+i+"]");
-            if(!visited[i]){
-                dfsHelper(letters, visited, i);
-            }
-        }
-    }*/
-
-
-    public static int maxSum(int[] array, int k){
-        int max = Integer.MIN_VALUE;
-        int currMax = 0;
-
-        for(int i = 0; i < array.length; i++){
-            currMax += array[i];
-            if(i >= k - 1){
-                max = Math.max(max, currMax);
-                currMax = currMax - (array[i - (k-1)]);
-            }
-
-        }
-        return max;
-    }
-
     public static void main(String[] args){
         int[] array = new int[]{4,2,1,7,8,1,2,8,1,0};
         String[] string = new String[]{"A","A","A","H","H","B","B","C","B","C"};
         System.out.println(maxSum(array, 3));
-        //System.out.println(maxSum(array, 3));
         //System.out.println(smallestSubArrayGreaterThanOrEqualToK(array, 8));
         //System.out.println(smallestSubArray(array, 8));
         //System.out.println(longestSubstringWithXDistinctChars(string, 2));
